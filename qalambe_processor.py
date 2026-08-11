@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 qalambe_processor.py - پردازشگر اصلی بازی اسم و فامیل
+فقط ۱۲ دسته اصلی
 """
 import os
 import sys
@@ -15,6 +16,13 @@ from duplicate_finder import check_new_word, find_duplicates
 from auto_correct import auto_correct_word, batch_auto_correct
 from smart_decision import SmartDecisionMaker
 
+# فقط ۱۲ دسته اصلی
+MAIN_CATEGORIES = [
+    "persian_names.txt", "surnames.txt", "cities.txt", "countries.txt",
+    "foods.txt", "fruits.txt", "colors.txt", "cars.txt", "animals.txt",
+    "objects.txt", "flowers.txt", "jobs.txt"
+]
+
 class QalambeProcessor:
     """پردازشگر اصلی بازی اسم و فامیل"""
     
@@ -24,11 +32,11 @@ class QalambeProcessor:
         self.files = self.load_all_files()
     
     def load_all_files(self):
-        """بارگذاری همه فایل‌ها"""
+        """بارگذاری فقط ۱۲ فایل اصلی"""
         files = {}
-        for fname in os.listdir(self.db_dir):
-            if fname.endswith('.txt') and fname != "decision_log.json":
-                path = os.path.join(self.db_dir, fname)
+        for fname in MAIN_CATEGORIES:
+            path = os.path.join(self.db_dir, fname)
+            if os.path.exists(path):
                 with open(path, "r", encoding="utf-8") as f:
                     files[fname] = [line.strip() for line in f if line.strip()]
         return files
@@ -40,6 +48,19 @@ class QalambeProcessor:
         for item in words_with_categories:
             word = item["word"]
             game_category = item["file"]
+            
+            # بررسی اینکه آیا دسته اصلی هست
+            if game_category not in MAIN_CATEGORIES:
+                results.append({
+                    "original": word,
+                    "corrected": word,
+                    "category": game_category,
+                    "decision": {
+                        "decision": "reject",
+                        "reason": f"دسته '{game_category}' جز ۱۲ دسته اصلی نیست"
+                    }
+                })
+                continue
             
             # ۱. اصلاح خودکار
             corrected_word = auto_correct_word(word)
@@ -106,8 +127,6 @@ class QalambeProcessor:
             "countries.txt": "🌍", "foods.txt": "🍽️", "fruits.txt": "🍎",
             "colors.txt": "🎨", "cars.txt": "🚗", "animals.txt": "🐾",
             "objects.txt": "📦", "flowers.txt": "🌸", "jobs.txt": "💼",
-            "sports.txt": "⚽", "instruments.txt": "🎵", "brands.txt": "🏷️",
-            "seasons.txt": "🗓️", "body_parts.txt": "🦴", "clothes.txt": "👕",
         }
         
         names = {
@@ -115,9 +134,7 @@ class QalambeProcessor:
             "cities.txt": "شهرها", "countries.txt": "کشورها", "foods.txt": "غذاها",
             "fruits.txt": "میوه‌ها", "colors.txt": "رنگ‌ها", "cars.txt": "ماشین‌ها",
             "animals.txt": "حیوانات", "objects.txt": "اشیاء", "flowers.txt": "گل‌ها",
-            "jobs.txt": "مشاغل", "sports.txt": "ورزش‌ها", "instruments.txt": "سازها",
-            "brands.txt": "برندها", "seasons.txt": "فصل‌ها", "body_parts.txt": "اعضای بدن",
-            "clothes.txt": "لباس‌ها",
+            "jobs.txt": "مشاغل",
         }
         
         for fname in sorted_files:
@@ -140,43 +157,12 @@ class QalambeProcessor:
 
 ---
 
-## 🔧 ابزارها
-
-### spell_checker.py
-بررسی و اصلاح غلط‌های املایی
-
-### category_validator.py
-تایید دسته‌بندی کلمات
-
-### duplicate_finder.py
-پیدا کردن کلمات تکراری
-
-### auto_correct.py
-اصلاح خودکار کلمات غلط
-
-### smart_decision.py
-تصمیم‌گیری هوشمند بدون نیاز به ادمین
-
----
-
 ## 🤖 مشارکت خودکار
 
 این دیتابیس توسط ربات **قلمبه** به صورت خودکار بروزرسانی میشه:
 - کلمات جدید از بازی جمع‌آوری میشن
 - بعد از بررسی تکرار، اضافه میشن
-- اصلاحات املایی خودکار انجام میشه
 - فورک و PR خودکار ایجاد میشه
-
----
-
-## 📈 آمار تصمیمات
-
-| تصمیم | تعداد |
-|--------|--------|
-| پذیرفته شده | {self.decision_maker.get_stats()['accepted']} |
-| رد شده | {self.decision_maker.get_stats()['rejected']} |
-| اصلاح شده | {self.decision_maker.get_stats()['corrected']} |
-| مجموع | {self.decision_maker.get_stats()['total']} |
 
 ---
 
