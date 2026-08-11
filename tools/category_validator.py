@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 """
 category_validator.py - تایید دسته‌بندی کلمات
+فقط ۱۲ دسته اصلی
 """
 import os
 import json
+
+# فقط ۱۲ دسته اصلی
+MAIN_CATEGORIES = [
+    "persian_names.txt", "surnames.txt", "cities.txt", "countries.txt",
+    "foods.txt", "fruits.txt", "colors.txt", "cars.txt", "animals.txt",
+    "objects.txt", "flowers.txt", "jobs.txt"
+]
 
 # کلمات کلیدی برای هر دسته
 CATEGORY_KEYWORDS = {
@@ -19,12 +27,6 @@ CATEGORY_KEYWORDS = {
     "objects.txt": ["شیء", "وسیله", "ابزار", "دستگاه"],
     "flowers.txt": ["گل", "باغچه", "باغ"],
     "jobs.txt": ["شغل", "کار", "حرفه", "تخصص"],
-    "sports.txt": ["ورزش", "مسابقه", "توپ", "میدان"],
-    "instruments.txt": ["ساز", "موسیقی", "نواختن", "آهنگ"],
-    "brands.txt": ["برند", "شرکت", "تولید", "ساخت"],
-    "seasons.txt": ["فصل", "بهار", "تابستان", "پاییز", "زمستان"],
-    "body_parts.txt": ["بدن", "عضو", "اندام"],
-    "clothes.txt": ["لباس", "پوشش", "حجاب"],
 }
 
 # دسته‌بندی معکوس: کلمه → دسته
@@ -35,18 +37,19 @@ WORD_TO_CATEGORY = {
     "کامیون": "cars.txt",
     "اتوبوس": "cars.txt",
     "موتور": "cars.txt",
-    "فوتبال": "sports.txt",
-    "والیبال": "sports.txt",
-    "بسکتبال": "sports.txt",
-    "گیتار": "instruments.txt",
-    "پیانو": "instruments.txt",
-    "ویولن": "instruments.txt",
-    "سنتور": "instruments.txt",
-    "تار": "instruments.txt",
 }
 
 def validate_category(word, suggested_category):
     """تایید دسته‌بندی پیشنهادی"""
+    # بررسی اینکه آیا دسته اصلی هست
+    if suggested_category not in MAIN_CATEGORIES:
+        return {
+            "valid": False,
+            "word": word,
+            "suggested": suggested_category,
+            "reason": f"دسته '{suggested_category}' جز ۱۲ دسته اصلی نیست"
+        }
+    
     # بررسی لیست ثابت
     if word in WORD_TO_CATEGORY:
         actual = WORD_TO_CATEGORY[word]
@@ -86,6 +89,7 @@ if __name__ == "__main__":
         {"word": "کوکوسبزی", "category": "foods.txt"},
         {"word": "دیزیچه", "category": "cities.txt"},
         {"word": "پراید", "category": "objects.txt"},  # اشتباه
+        {"word": "فوتبال", "category": "sports.txt"},  # دسته جدید - رد میشه
     ]
     
     results = batch_validate(test_words)
