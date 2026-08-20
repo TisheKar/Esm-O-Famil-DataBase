@@ -10,7 +10,7 @@
 |------|-----------|------|
 | 👤 اسامی ایرانی | 1,735 | `persian_names.txt` |
 | 👨‍👩‍👧 فامیلی‌ها | 33,636 | `surnames.txt` |
-| 🏙️ شهرها | 1,100 | `cities.txt` |
+| 🏙️ شهرها | 4,374 | `cities.txt` |
 | 🌍 کشورها | 360 | `countries.txt` |
 | 🎨 رنگ‌ها | 447 | `colors.txt` |
 | 🍎 میوه‌ها | 505 | `fruits.txt` |
@@ -23,7 +23,7 @@
 
 ---
 
-## 📈 **مجموع: 42,776 کلمه**
+## 📈 **مجموع: 46,050 کلمه**
 
 ---
 
@@ -35,7 +35,8 @@
 - مرتب‌سازی الفبای فارسی (آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی)
 - فامیلی‌ها: تک‌کلمه (فاصله‌دارها حذف شده)
 - اسامی: تنها ترکیبات سنتی (علی اصغر، علی اکبر)
-- اعتبارسنجی با ویکی‌پدیا و دیتاست‌های رسمی (armanyazdi, farbodbj)
+- شهرها: همه شهرها، شهرک‌ها، محلات (بدون پیشوند شهرک/شماره)
+- اعتبارسنجی با ویکی‌پدیا و دیتاست‌های رسمی (armanyazdi, farbodbj, mhndev/iran-geography)
 
 ---
 
@@ -43,4 +44,5 @@
 
 - [armanyazdi/persian-names](https://github.com/armanyazdi/persian-names) — ۱۸,۰۰۰+ اسم فارسی
 - [farbodbj/iranian-surname-frequencies](https://github.com/farbodbj/iranian-surname-frequencies) — ۱۰۰,۰۰۰+ فامیلی با فرکانس
-- Persian Wikipedia API — شهر، کشور، رنگ، میوه، حیوان، گل
+- [mhndev/iran-geography](https://github.com/mhndev/iran-geography) — ۴,۳۰۰+ شهر، شهرک، محله ایران
+- Persian Wikipedia API — کشور، رنگ، میوه، حیوان، گل
