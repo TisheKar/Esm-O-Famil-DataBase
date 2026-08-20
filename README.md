@@ -12,7 +12,7 @@
 | 👨‍👩‍👧 فامیلی‌ها | 33,636 | `surnames.txt` |
 | 🏙️ شهرها | 4,374 | `cities.txt` |
 | 🌍 کشورها | 360 | `countries.txt` |
-| 🎨 رنگ‌ها | 447 | `colors.txt` |
+| 🎨 رنگ‌ها | 615 | `colors.txt` |
 | 🍎 میوه‌ها | 505 | `fruits.txt` |
 | 🐾 حیوانات | 1,657 | `animals.txt` |
 | 🌸 گل‌ها | 805 | `flowers.txt` |
@@ -23,7 +23,7 @@
 
 ---
 
-## 📈 **مجموع: 47,033 کلمه**
+## 📈 **مجموع: 47,201 کلمه**
 
 ---
 
@@ -37,6 +37,7 @@
 - اسامی: تنها ترکیبات سنتی (علی اصغر، علی اکبر)
 - شهرها: همه شهرها، شهرک‌ها، محلات (بدون پیشوند شهرک/شماره)
 - حیوانات: پستانداران، پرندگان، خزندگان، آبزیان، حشره‌ها
+- رنگ‌ها: رنگ‌های اصلی، ثانویه، متالیک، نئونی، سنتی ایرانی
 - اعتبارسنجی با ویکی‌پدیا و دیتاست‌های رسمی (armanyazdi, farbodbj, mhndev/iran-geography)
 
 ---
@@ -46,4 +47,4 @@
 - [armanyazdi/persian-names](https://github.com/armanyazdi/persian-names) — ۱۸,۰۰۰+ اسم فارسی
 - [farbodbj/iranian-surname-frequencies](https://github.com/farbodbj/iranian-surname-frequencies) — ۱۰۰,۰۰۰+ فامیلی با فرکانس
 - [mhndev/iran-geography](https://github.com/mhndev/iran-geography) — ۴,۳۰۰+ شهر، شهرک، محله ایران
-- Persian Wikipedia API — حیوانات، کشور، رنگ، میوه، گل
+- Persian Wikipedia API — حیوانات، رنگ‌ها، کشور، میوه، گل
