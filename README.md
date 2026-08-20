@@ -17,13 +17,13 @@
 | 🐾 حیوانات | 1,642 | `animals.txt` |
 | 🌸 گل‌ها | 1,084 | `flowers.txt` |
 | 🍽️ غذاها | 1,303 | `foods.txt` |
-| 💼 مشاغل | 917 | `jobs.txt` |
+| 💼 مشاغل | 1,430 | `jobs.txt` |
 | 🚗 وسایل نقلیه | 300 | `cars.txt` |
 | 📦 اشیاء | 1,706 | `objects.txt` |
 
 ---
 
-## 📈 **مجموع: 47,988 کلمه**
+## 📈 **مجموع: 48,501 کلمه**
 
 ---
 
@@ -41,6 +41,7 @@
 - میوه‌ها: میوه‌های خوش‌خومه، خشک، استوایی، مغازی، باری
 - گل‌ها: گل‌های بومی، باغی، اکزوتیک، فصلی، دارویی
 - غذاها: دمپخت، آش، خوراک، پلو، کباب، شوربا، شیرینی، نان، مشروبات، منطقه‌ای
+- مشاغل: پزشکی، مهندسی، آموزشی، اداری، هنری، خدمات، کشاورزی، ساختمانی
 - اعتبارسنجی با ویکی‌پدیا و دیتاست‌های رسمی (armanyazdi, farbodbj, mhndev/iran-geography)
 
 ---
@@ -50,4 +51,4 @@
 - [armanyazdi/persian-names](https://github.com/armanyazdi/persian-names) — ۱۸,۰۰۰+ اسم فارسی
 - [farbodbj/iranian-surname-frequencies](https://github.com/farbodbj/iranian-surname-frequencies) — ۱۰۰,۰۰۰+ فامیلی با فرکانس
 - [mhndev/iran-geography](https://github.com/mhndev/iran-geography) — ۴,۳۰۰+ شهر، شهرک، محله ایران
-- Persian Wikipedia API — حیوانات، رنگ‌ها، میوه‌ها، گل‌ها، غذاها، کشور
+- Persian Wikipedia API — حیوانات، رنگ‌ها، میوه‌ها، گل‌ها، غذاها، مشاغل، کشور
